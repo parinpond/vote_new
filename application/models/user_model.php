@@ -6,6 +6,9 @@ class User_model extends CI_Model{
         if (!empty($data['username'])) {
             $this->db->where('username', $data['username']);
         }
+        if (!empty($data['user_id'])) {
+            $this->db->where('id', $data['user_id']);
+        }
         $this->db->order_by('id', 'desc');
         $q = $this->db->get();
         //print_r($this->db->last_query());
@@ -24,7 +27,15 @@ class User_model extends CI_Model{
             ));
         }
     }
-    function update_user($data) {
+    function upload_picture_user($data) {
+        if(!empty($data)){
+            $id =$data['user_id'];
+			$data=['path_img_profile'=> $data['path']];
+			$this->db->where('id',$id);
+			$this->db->update('user',$data);
+        }
+    }
+    function upload_picture($data) {
         if(!empty($data)){
             $id =$data['id'];
 			$data=[

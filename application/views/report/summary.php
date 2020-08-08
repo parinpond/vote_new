@@ -23,34 +23,34 @@
 </div>
 <div class="card-body">
 	<div class="row">
-	<div class="col-lg-12">
 		<div style="width: 100%">
 			<canvas id="myChart"></canvas>
 		</div>
 		</div>
 	<form autocomplete="off" class="user" method="post" action="<?php echo base_url();?>report/summary">
-		
-	
 		<div class="col-lg-12">
 			<div class="p-4">
 				<div class="form-group row">
-				<div class="col-sm-4">
+				<div class="col-sm-5">
 				<input type="date" class="form-control form-control-user" name="start_date_summary" id="start_date_summary" placeholder="Start date">
 				</div>
-				<div class="col-sm-4">
+				<div class="col-sm-5">
 				<input type="date" class="form-control form-control-user" name="end_date_summary" id="end_date_summary" placeholder="End date">
 				</div>
 				<!--<div class="col-sm-2">
 				<input type="text" class="form-control form-control-user" name="total_summary" id="total_summary" placeholder="Total">
 				</div>-->
-				<div class="col-sm-3">
+				<div class="col-sm-2">
 				<button type="submit" class="btn btn-primary btn-user btn-block search_summary">Search</button>
 				</div>
 			</div>
 		</div>
 	</form>
+	<div class="col-lg-12">
+	<?php echo "<B>Total = ".count($result)."</B> (".$start_date." To ".$end_date .")";?>
+	</div>
 		<div class="col-lg-12">
-	    <table class="table table-bordered" id="trasactionTable" width="100%" cellspacing="0">
+	    <table class="table table-bordered" id="trasactionTable" cellspacing="0">
 	        <thead>
 	        <tr>
 	            <th>#</th>
@@ -72,18 +72,18 @@
 			$i=0;
 			$create_chart =[];
 			foreach($result as $value){ $i++;
-				$create_chart[$i]['user_id']=  $value->user_id;
-                $create_chart[$i]['name_vote_user'] = $user_id[$value->user_id];
+				$create_chart[$i]['vote_user_id']=  $value->vote_user_id;
+                $create_chart[$i]['name_vote_user'] = $user_id[$value->vote_user_id];
                 $create_chart[$i]['count']=  $value->count;
 			?>
 	          <tr>
 	            <td><?php echo $i;?></td>
-	            <td><?php echo $user_id[$value->user_id];?></td>
+	            <td><?php echo $user_id[$value->vote_user_id];?></td>
 	            <td>
-					<a href="#" class="DetailSummaryModal" data-id="<?php echo $value->user_id;?>" data-toggle="modal" data-target="#DetailSummaryModal<?php echo $value->user_id;?>" data-toggle="tooltip" title="Cilck looking for detail">
+					<a href="#" class="DetailSummaryModal" data-id="<?php echo $value->vote_user_id;?>" data-toggle="modal" data-target="#DetailSummaryModal<?php echo $value->vote_user_id;?>" data-toggle="tooltip" title="Cilck looking for detail">
 					<?php echo $value->count;?>
 					</a>  
-					<div class="modal fade" id="DetailSummaryModal<?php echo $value->user_id;?>"  role="dialog" aria-labelledby="" aria-hidden="true" >
+					<div class="modal fade" id="DetailSummaryModal<?php echo $value->vote_user_id;?>"  role="dialog" aria-labelledby="" aria-hidden="true" >
 						<div class="modal-dialog modal-lg" role="document">
 						<div class="modal-content">
 						<div class="modal-header">
@@ -114,7 +114,7 @@
 					            </th>
 								</tr>
 								</thead>
-							<tbody id="detail_summary_table<?php echo $value->user_id;?>" >
+							<tbody id="detail_summary_table<?php echo $value->vote_user_id;?>" >
 							</tbody>
 							</table>
 						</div>

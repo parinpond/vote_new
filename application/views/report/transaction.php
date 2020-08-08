@@ -5,7 +5,7 @@
 <div class="container">
 <!-- Page Heading -->
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-<h1 class="h3 mb-0 text-gray-800">Trasaction</h1>
+<h1 class="h3 mb-0 text-gray-800">Transaction</h1>
 </div>
 
 <!-- DataTales Example -->
@@ -43,23 +43,23 @@
             <th>#</th>
             <th>
                 <em>Name</em> 
-                <i class="fa fa-fw fa-chevron-circle-down" data-column-id='0' data-order='asc' data-table='trasactionTable'></i>
-                <i class="fa fa-fw fa-chevron-circle-up" data-column-id='0' data-order='desc' data-table='trasactionTable'></i> 
+                <i class="fa fa-fw fa-chevron-circle-down" data-column-id='1' data-order='asc' data-table='trasactionTable'></i>
+                <i class="fa fa-fw fa-chevron-circle-up" data-column-id='1' data-order='desc' data-table='trasactionTable'></i> 
             </th>
             <th>
                 <em>Vote for</em> 
-                <i class="fa fa-fw fa-chevron-circle-down" data-column-id='0' data-order='asc' data-table='trasactionTable'></i>
-                <i class="fa fa-fw fa-chevron-circle-up" data-column-id='0' data-order='desc' data-table='trasactionTable'></i> 
+                <i class="fa fa-fw fa-chevron-circle-down" data-column-id='2' data-order='asc' data-table='trasactionTable'></i>
+                <i class="fa fa-fw fa-chevron-circle-up" data-column-id='2' data-order='desc' data-table='trasactionTable'></i> 
             </th>
             <th>
                 <em>Comment</em> 
-                <i class="fa fa-fw fa-chevron-circle-down" data-column-id='0' data-order='asc' data-table='trasactionTable'></i>
-                <i class="fa fa-fw fa-chevron-circle-up" data-column-id='0' data-order='desc' data-table='trasactionTable'></i> 
+                <i class="fa fa-fw fa-chevron-circle-down" data-column-id='3' data-order='asc' data-table='trasactionTable'></i>
+                <i class="fa fa-fw fa-chevron-circle-up" data-column-id='3' data-order='desc' data-table='trasactionTable'></i> 
             </th>
             <th>
                 <em>Date</em> 
-                <i class="fa fa-fw fa-chevron-circle-down" data-column-id='0' data-order='asc' data-table='trasactionTable'></i>
-                <i class="fa fa-fw fa-chevron-circle-up" data-column-id='0' data-order='desc' data-table='trasactionTable'></i> 
+                <i class="fa fa-fw fa-chevron-circle-down" data-column-id='4' data-order='asc' data-table='trasactionTable'></i>
+                <i class="fa fa-fw fa-chevron-circle-up" data-column-id='4' data-order='desc' data-table='trasactionTable'></i> 
             </th>
         </tr>
         </thead>

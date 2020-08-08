@@ -82,21 +82,22 @@
         <thead>
         <tr>
             <th>#</th>
-            <th>
+            <th width="20%">
 	            <em>Name</em>
-                <i class="fa fa-fw fa-chevron-circle-down" data-column-id='0' data-order='asc' data-table='userTable'></i>
-				<i class="fa fa-fw fa-chevron-circle-up" data-column-id='0' data-order='desc' data-table='userTable'></i>
+                <i class="fa fa-fw fa-chevron-circle-down" data-column-id='1' data-order='asc' data-table='userTable'></i>
+				<i class="fa fa-fw fa-chevron-circle-up" data-column-id='1' data-order='desc' data-table='userTable'></i>
 			</th>
             <th>
 	            <em>Nick name</em>
-                <i class="fa fa-fw fa-chevron-circle-down" data-column-id='0' data-order='asc' data-table='userTable'></i>
-				<i class="fa fa-fw fa-chevron-circle-up" data-column-id='0' data-order='desc' data-table='userTable'></i>
+                <i class="fa fa-fw fa-chevron-circle-down" data-column-id='2' data-order='asc' data-table='userTable'></i>
+				<i class="fa fa-fw fa-chevron-circle-up" data-column-id='2' data-order='desc' data-table='userTable'></i>
 			</th>
             <th>
 	            <em>Username</em>
-                <i class="fa fa-fw fa-chevron-circle-down" data-column-id='0' data-order='asc' data-table='userTable'></i>
-				<i class="fa fa-fw fa-chevron-circle-up" data-column-id='0' data-order='desc' data-table='userTable'></i>
+                <i class="fa fa-fw fa-chevron-circle-down" data-column-id='3' data-order='asc' data-table='userTable'></i>
+				<i class="fa fa-fw fa-chevron-circle-up" data-column-id='3' data-order='desc' data-table='userTable'></i>
 			</th>
+			<th width="20%">Picture</th>
             <th></th>
         </tr>
         </thead>
@@ -108,7 +109,10 @@
             <td><?php echo $i;?></td>
             <td><?php echo $value->firstname."-".$value->lastname;?></td>
             <td><?php echo $value->nickname;?></td>
-            <td><?php echo $value->username;?></td>
+			<td><?php echo $value->username;?></td>
+			<td>
+				<img style="width:30%;" src="<?php echo ($value->path_img_profile=="")?base_url()."picture_profile/img_empty.png":base_url().$value->path_img_profile;?>">    
+			</td>
             <td>
 	            <button type="button" class="btn btn-warning" class="UpdateUserModal" data-id="<?php echo $value->id;?>" data-toggle="modal" data-target="#UpdateUserModal<?php echo $value->id;?>" data-toggle="tooltip" title="Cilck update user"><i class="fa fa-pencil"></i>
 				</button>  

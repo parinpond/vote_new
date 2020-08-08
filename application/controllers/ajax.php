@@ -13,19 +13,19 @@ class Ajax extends CI_Controller {
         }
     }
     function detail_summary() {
-        $data['user_id'] =$_GET['user_id'];
+        $data['vote_user_id'] =$_GET['vote_user_id'];
         $user=$this->user_model->select();
         $user_list=[];
         foreach($user as $k =>$v){
             $user_list[$v->id] =$v->firstname." - ".$v->lastname ." (".$v->nickname.")";
         }
-        if($data['user_id'] != ""){
+        if($data['vote_user_id'] != ""){
             $data['result']=$this->report_model->select($data);
             $result = [];
             foreach($data['result'] as $key =>$value){
                 $result[$key]['user_id']=  $value->user_id;
                 $result[$key]['vote_user_id']=  $value->vote_user_id;
-                $result[$key]['name_vote_user'] = $user_list[$value->vote_user_id];
+                $result[$key]['name_vote_user'] = $user_list[$value->user_id];
                 $result[$key]['comment']=  $value->comment;
                 $result[$key]['create_date']=  $value->create_date;
             }
@@ -45,12 +45,12 @@ class Ajax extends CI_Controller {
         $result = [];
         foreach($data['result'] as $key =>$value){
             if($value->count == $data['total']){
-                $result[$key]['user_id']=  $value->user_id;
-                $result[$key]['name_vote_user'] = $user_list[$value->user_id];
+                $result[$key]['vote_user_id']=  $value->vote_user_id;
+                $result[$key]['name_vote_user'] = $user_list[$value->vote_user_id];
                 $result[$key]['count']=  $value->count;
             }else{
-                $result[$key]['user_id']=  $value->user_id;
-                $result[$key]['name_vote_user'] = $user_list[$value->user_id];
+                $result[$key]['vote_user_id']=  $value->vote_user_id;
+                $result[$key]['name_vote_user'] = $user_list[$value->vote_user_id];
                 $result[$key]['count']=  $value->count;
             }
             

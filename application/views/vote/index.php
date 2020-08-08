@@ -131,7 +131,7 @@
 	            <em>Date</em>
 	            <i class="fa fa-fw fa-chevron-circle-down" data-column-id='0' data-order='asc' data-table='historyYTable'></i>
 				<i class="fa fa-fw fa-chevron-circle-up" data-column-id='0' data-order='desc' data-table='historyYTable'></i>
-				</th>
+			</th>
         </tr>
         </thead>
         <tbody>
@@ -169,22 +169,22 @@
         <table class="table table-bordered" width="100%" cellspacing="0" id="userTableSort">
             <thead>
             <tr>
-                <th>#</th>
-                <th>
+                <th width="20%">Picture</th>
+                <th width="20%">
 	                <em>First name</em>
-	                <i class="fa fa-fw fa-chevron-circle-down" data-column-id='0' data-order='asc' data-table='userTableSort'></i>
-					<i class="fa fa-fw fa-chevron-circle-up" data-column-id='0' data-order='desc' data-table='userTableSort'></i>
+	                <i class="fa fa-fw fa-chevron-circle-down" data-column-id='1' data-order='asc' data-table='userTableSort'></i>
+					<i class="fa fa-fw fa-chevron-circle-up" data-column-id='1' data-order='desc' data-table='userTableSort'></i>
                 </th>
-                <th>
+                <th width="20%">
 	                <em>Last name</em>
-	                <i class="fa fa-fw fa-chevron-circle-down" data-column-id='0' data-order='asc' data-table='userTableSort'></i>
-					<i class="fa fa-fw fa-chevron-circle-up" data-column-id='0' data-order='desc' data-table='userTableSort'></i>
+	                <i class="fa fa-fw fa-chevron-circle-down" data-column-id='2' data-order='asc' data-table='userTableSort'></i>
+					<i class="fa fa-fw fa-chevron-circle-up" data-column-id='3' data-order='desc' data-table='userTableSort'></i>
                 </th>
-                <th>
+                <th width="20%">
 	                <em>Nick name</em>
-					<i class="fa fa-fw fa-chevron-circle-down" data-column-id='0' data-order='asc' data-table='userTableSort'></i>
-					<i class="fa fa-fw fa-chevron-circle-up" data-column-id='0' data-order='desc' data-table='userTableSort'></i>
-	            </th>
+					<i class="fa fa-fw fa-chevron-circle-down" data-column-id='3' data-order='asc' data-table='userTableSort'></i>
+					<i class="fa fa-fw fa-chevron-circle-up" data-column-id='3' data-order='desc' data-table='userTableSort'></i>
+                </th>
                 <th>Vote</th>
             </tr>
             </thead>
@@ -193,10 +193,13 @@
             $i=0;
             foreach($result as $value){ $i++;?>
             <tr>
-                <td><?php echo $i;?></td>
+                <td>
+                <img style="width:30%;" src="<?php echo ($value->path_img_profile=="")?base_url()."picture_profile/img_empty.png":base_url().$value->path_img_profile;?>">    
+                </td>
                 <td><?php echo $value->firstname;?></td>
                 <td><?php echo $value->lastname;?></td>
                 <td><?php echo $value->nickname;?></td>
+                
                 <td>
 	                <?php if( $limit_point-count($history_monthly) != 0) { ?>
 	                
@@ -221,9 +224,18 @@
                             <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-2">Comment</div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800">
-                            <textarea id="comment" name="comment" rows="4" cols="50" class="form-control" placeholder="Enter Comment...." autofocus>
+                            <textarea required="required" style="" id="comment<?php echo $value->user_id;?>" name="comment" rows="4" cols="50" class="form-control" placeholder="Enter Comment...." autofocus>
                             </textarea>
                             </div>
+
+                            <div class="m-4">
+                            <button type="button" data-id="<?php echo $value->user_id;?>" class="btn btn-light text-thank-you">Thank you.</button>
+                            <button type="button" data-id="<?php echo $value->user_id;?>" class="btn btn-light text-congratulation">Congratulation.</button>
+                            <button type="button" data-id="<?php echo $value->user_id;?>" class="btn btn-light text-no-resson">No resson.</button>
+                            <button type="button" data-id="<?php echo $value->user_id;?>" class="btn btn-light text-hard-work">Hard work.</button>
+                            <button type="button" data-id="<?php echo $value->user_id;?>" class="btn btn-light text-smart-work">Smart work.</button>
+                            </div>
+
                             </div>
                             </div>
                             <div class="modal-footer">

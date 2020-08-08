@@ -31,10 +31,13 @@
 	
 	<ul class="navbar-nav mr-auto">
 		<li class="nav-item dropdown active">
-		<a class="nav-link dropdown-toggle" href="#" id="dropdown05" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?php echo $session['username']; ?>
+		<a class="nav-link dropdown-toggle" href="#" id="dropdown05" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		<img src="<?php echo ($session['path_img_profile']=="")?  base_url()."picture_profile/img_empty.png":$session['path_img_profile'];?>" style="border-radius: 50%;width:40px;">
+		<?php echo $session['username']; ?>
 		<span class="badge badge-danger badge-counter"><i class="fa fa-star"></i> <?php echo 3-count($count_point_monthly); ?></a>
 		<div class="dropdown-menu" aria-labelledby="dropdown05">
 			<a class="dropdown-item" href="#" data-toggle="modal" data-target="#change_passwordModal"><i class="fa fa-cog"></i> Change password</a>
+			<a class="dropdown-item" href="#" data-toggle="modal" data-target="#change_pictureModal"><i class="fa fa-picture-o"></i> Change picture</a>
 			<a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal"><i class="fa fa-sign-out"></i> Logout</a>
 		</div>
 		</li>	
@@ -43,6 +46,48 @@
     
 <!-- Modal -->
 </nav>
+<div class="modal fade" id="change_pictureModal" tabindex="-1" role="dialog" aria-labelledby="change_pictureLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="change_pictureLabel">Change picture?</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">
+			<p class="mb-4">Please select picture</p>
+			<img style="display: block;margin-left: auto;margin-right: auto;width: 50%;" src="<?php echo ($session['path_img_profile']=="")?  base_url()."picture_profile/img_empty.png":$session['path_img_profile'];?>" style="border-radius: 50%;width:100px;">
+	        <form class="form-signin" action="<?php echo base_url();?>user/upload_picture"  method="post" enctype="multipart/form-data">
+			<input type="file" name="fileToUpload" id="fileToUpload">
+			<input type="hidden" id="user_id" name="user_id" value="<?php echo $session['user_id']; ?>">
+			<input type="hidden" id="username" name="username" value="<?php echo $session['username']; ?>">
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+          <button class="btn btn-primary" type="submit">Upload</button>
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>
+ <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+          <a class="btn btn-primary" href="<?php echo base_url();?>home/logout">Logout</a>
+        </div>
+      </div>
+    </div>
+  </div>
 <div class="modal fade" id="change_passwordModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">

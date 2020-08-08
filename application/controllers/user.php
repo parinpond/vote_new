@@ -16,6 +16,42 @@ class User extends CI_Controller {
             $this->load->model('user_model');
         }
     }
+    function upload_picture() {
+        if (!empty($_REQUEST)) {
+            $data['user_id'] = trim($this->input->post('user_id'));
+            $data['username'] = trim($this->input->post('username'));
+            $username= explode('@', $data['username']);
+            $check_user=$this->user_model->select($data);
+            if(!empty($check_user)){
+                
+                $filename=$_FILES["fileToUpload"]["name"];
+                $extension=end(explode(".", $filename));
+                $rename=$username[0].round(microtime(true) * 1);
+                $new_name =$rename.".".$extension;
+                $data['path'] = "picture_profile/" .$new_name;
+                $this->user_model->upload_picture_user($data);
+                
+                $target_dir  = $_SERVER['DOCUMENT_ROOT'] . "/vote/picture_profile/".$new_name;
+                unlink($_SERVER['DOCUMENT_ROOT']."/vote/" .$check_user[0]->path_img_profile);
+                move_uploaded_file($_FILES["fileToUpload"]["tmp_name"],$target_dir);
+                $session = $this->session->userdata('login');
+                $session_array = array(
+	                'user_id'   => $session['user_id'],
+	                'user_type_id' => $session['user_type_id'],
+	                'username'  => $session['username'],
+	                'firstname' => $session['firstname'],
+	                'lastname'  => $session['lastname'],
+					'nickname'  => $session['nickname'],
+					'path_img_profile'=> base_url().$data['path'],
+					);
+	            $this->session->set_userdata('login', $session_array);
+	              
+                redirect('vote/index');
+            }
+            
+            
+        }
+    }
     function index($status=null) {
 	    $result['status']=$status;
         $result['result']=$this->user_model->select();

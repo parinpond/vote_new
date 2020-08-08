@@ -5,7 +5,7 @@ $(document).ready(function(){
 	    var order     = $(this).data('order');
 	    var table     = $(this).data('table');
 	    var rows      = $('table#'+table+' tbody tr').get();
-    
+    console.log('column_id='+column_id+'order='+order);
         rows.sort(function(a,b) {
 	        var A = $(a).children('td').eq(column_id).text().toUpperCase();
 	        var B = $(b).children('td').eq(column_id).text().toUpperCase();

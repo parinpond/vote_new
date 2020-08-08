@@ -34,8 +34,8 @@ class Report extends CI_Controller {
     function summary() {
         $data['start_date'] =trim($this->input->post('start_date_summary'));
         $data['end_date']   =trim($this->input->post('end_date_summary'));
-
         $data['result']     =$this->report_model->summary($data);
+        //print_r($data);
         $user=$this->user_model->select();
         $data['user_id']=[];
         foreach($user as $k =>$v){

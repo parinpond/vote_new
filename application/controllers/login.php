@@ -46,7 +46,8 @@ class Login extends CI_Controller {
 	                'username'  => $check[0]->username,
 	                'firstname' => $check[0]->firstname,
 	                'lastname'  => $check[0]->lastname,
-	                'nickname'  => $check[0]->nickname,
+					'nickname'  => $check[0]->nickname,
+					'path_img_profile'=> base_url().$check[0]->path_img_profile,
 					);
 	                $this->session->set_userdata('login', $session_array);
 	                if($data['remember_me'] == 'on'){
@@ -54,7 +55,7 @@ class Login extends CI_Controller {
 	                    $this->load->helper('cookie');
 	                    $cookie = $this->input->cookie('ci_sess'); // we get the cookie
 	                    $this->input->set_cookie('ci_sess', $cookie, '604800'); // and add one week to it's expiration
-	                }
+					}
 					redirect('vote/index');
 	        }else{
 	            redirect('login/index/empty');

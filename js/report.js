@@ -1,13 +1,12 @@
 $(document).ready(function(){
 $('[data-toggle="tooltip"]').tooltip();
 	$(".DetailSummaryModal").click(function() {
-		var user_id =$(this).data('id');
-		var check_flag=$("tbody#detail_summary_table"+user_id+" >tr").data('flag');
-		
-		if(user_id != "" && check_flag != "1"){
+		var vote_user_id =$(this).data('id');
+		var check_flag=$("tbody#detail_summary_table"+vote_user_id+" >tr").data('flag');
+		if(vote_user_id != "" && check_flag != "1"){
 			$.ajax({ 
 				url :'/vote/ajax/detail_summary',  
-				data: {user_id : user_id,},
+				data: {vote_user_id : vote_user_id,},
 				success: function(result) { 
 					var i=0;
 					$.each(JSON.parse(result), function(index,row) {
@@ -17,7 +16,7 @@ $('[data-toggle="tooltip"]').tooltip();
 						$('<td>').text(row.name_vote_user),
 						$('<td>').text(row.comment),
 						$('<td>').text(row.create_date)
-						).appendTo('tbody#detail_summary_table'+row.user_id);
+						).appendTo('tbody#detail_summary_table'+row.vote_user_id);
 						$tr.html();
 					});
 				}
