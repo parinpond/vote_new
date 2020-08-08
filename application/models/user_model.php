@@ -35,7 +35,7 @@ class User_model extends CI_Model{
 			$this->db->update('user',$data);
         }
     }
-    function upload_picture($data) {
+    function update_user($data) {
         if(!empty($data)){
             $id =$data['id'];
 			$data=[
