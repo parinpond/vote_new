@@ -52,10 +52,10 @@ $config['mode'] = "production"; //production
 $active_group = 'default';
 $active_record = TRUE;
 
-/* $db['default']['hostname'] = '192.168.134.14';
-$db['default']['username'] = 'tvs_singha_rw';
-$db['default']['password'] = 'e2jw4HJ1lu0qmL4';
-$db['default']['database'] = 'TVAS_Dailynews';
+/* $db['default']['hostname'] = '';
+$db['default']['username'] = '';
+$db['default']['password'] = '';
+$db['default']['database'] = '';
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';
 $db['default']['pconnect'] = TRUE;
