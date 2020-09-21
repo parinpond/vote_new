@@ -1,5 +1,5 @@
 <?php
-define('SecretKey', "6Ldk-7EZAAAAAFRYzkQQMT5MlqbTx-jPQo-mwIKw");
+define('SecretKey', "");
 session_start();
 
 class Login extends CI_Controller {
