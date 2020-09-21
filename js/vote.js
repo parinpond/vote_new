@@ -7,22 +7,22 @@ $(document).ready(function(){
     });
     $(".text-thank-you").on("click", function() {
         var id =$(this).data("id");
-        $("#comment"+id).append('Thank you.').css('textAlign', 'left');
+        $("#comment"+id).html('Thank you.').css('text-align','left');
     });
     $(".text-congratulation").on("click", function() {
         var id =$(this).data("id");
-        $("#comment"+id).append('Congratulation.');
+        $("#comment"+id).html('Congratulation.').css('text-align','left');
     });
     $(".text-no-resson").on("click", function() {
         var id =$(this).data("id");
-        $("#comment"+id).append('No resson.');
+        $("#comment"+id).html('No resson.').css('text-align','left');
     });
     $(".text-hard-work").on("click", function() {
         var id =$(this).data("id");
-        $("#comment"+id).append('Hard work.');
+        $("#comment"+id).html('Hard work.').css('text-align','left');
     });
     $(".text-smart-work").on("click", function() {
         var id =$(this).data("id");
-        $("#comment"+id).append('Smart work.');
+        $("#comment"+id).html('Smart work.').css('text-align','left');
     });
 });

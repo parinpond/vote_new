@@ -191,7 +191,7 @@
             <tbody id="userTable" >
             <?php 
             $i=0;
-            foreach($result as $value){ $i++;?>
+            foreach($result as $value){ $i++; ?>
             <tr>
                 <td>
                 <img style="width:30%;" src="<?php echo ($value->path_img_profile=="")?base_url()."picture_profile/img_empty.png":base_url().$value->path_img_profile;?>">    
@@ -224,16 +224,17 @@
                             <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-2">Comment</div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800">
-                            <textarea required="required" style="" id="comment<?php echo $value->user_id;?>" name="comment" rows="4" cols="50" class="form-control" placeholder="Enter Comment...." autofocus>
+                            <div id="textarea_empty<?php echo $value->id;?>"></div>
+                            <textarea required="required"  id="comment<?php echo $value->id;?>" name="comment" rows="4" cols="50" class="form-control" placeholder="Enter Comment...." autofocus>
                             </textarea>
                             </div>
 
                             <div class="m-4">
-                            <button type="button" data-id="<?php echo $value->user_id;?>" class="btn btn-light text-thank-you">Thank you.</button>
-                            <button type="button" data-id="<?php echo $value->user_id;?>" class="btn btn-light text-congratulation">Congratulation.</button>
-                            <button type="button" data-id="<?php echo $value->user_id;?>" class="btn btn-light text-no-resson">No resson.</button>
-                            <button type="button" data-id="<?php echo $value->user_id;?>" class="btn btn-light text-hard-work">Hard work.</button>
-                            <button type="button" data-id="<?php echo $value->user_id;?>" class="btn btn-light text-smart-work">Smart work.</button>
+                            <button type="button" data-id="<?php echo $value->id;?>" class="btn btn-light text-thank-you">Thank you.</button>
+                            <button type="button" data-id="<?php echo $value->id;?>" class="btn btn-light text-congratulation">Congratulation.</button>
+                            <button type="button" data-id="<?php echo $value->id;?>" class="btn btn-light text-no-resson">No resson.</button>
+                            <button type="button" data-id="<?php echo $value->id;?>" class="btn btn-light text-hard-work">Hard work.</button>
+                            <button type="button" data-id="<?php echo $value->id;?>" class="btn btn-light text-smart-work">Smart work.</button>
                             </div>
 
                             </div>
@@ -242,7 +243,7 @@
                             <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
                             <input type="hidden" id="vote_user_id" name="vote_user_id" value="<?php echo $value->id ;?>"/>
                             <input type="hidden" id="user_id" name="user_id" value="<?php echo $session['user_id']; ?>"/>
-                            <button type="submit" class="btn btn-primary submit_vote">Vote</button>
+                            <button type="submit" data-id="<?php echo $value->id;?>" class="btn btn-primary submit_vote">Vote</button>
                             </div>
                         </div>
                         </div>

@@ -69,10 +69,11 @@ $(document).ready(function(){
         }
       }
     $(".submit_vote").click(function(){
-        var comment =$(this).find("#comment").val().trim();
-        console.log(comment);
+        var id =$(this).data("id");
+        var comment =$("#comment"+id).val().trim();
         if(comment == ''){
-            $("textarea#comment").focus();
+            $("textarea#comment"+id).focus();
+            $("#textarea_empty"+id).text('Please input comment.').css("color", "red");
             return false;
         }
         return true;

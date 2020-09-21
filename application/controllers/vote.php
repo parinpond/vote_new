@@ -36,10 +36,13 @@ class Vote extends CI_Controller {
     function add() {
         if(!empty($_REQUEST)){
             $data = array();
+            
             $data['user_id']= trim($this->input->post('user_id'));
             $data['vote_user_id']= trim($this->input->post('vote_user_id'));
             $data['comment']= trim($this->input->post('comment'));
-            $this->vote_model->add($data);
+            if(!empty($data['comment'])){
+                $this->vote_model->add($data);
+            }
             redirect('vote/index');
         }
     }
