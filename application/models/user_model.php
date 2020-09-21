@@ -29,7 +29,7 @@ class User_model extends CI_Model{
     }
     function upload_picture_user($data) {
         if(!empty($data)){
-            $id =$data['user_id'];
+            $id =($data['user_id'] !="")?$data['user_id']:$data['id'];
 			$data=['path_img_profile'=> $data['path']];
 			$this->db->where('id',$id);
 			$this->db->update('user',$data);
@@ -42,7 +42,8 @@ class User_model extends CI_Model{
 				'firstname'=> $data['firstname'], 
                 'lastname' => $data['lastname'],
                 'nickname' => $data['nickname'],
-                'user_type_id' => $data['user_type_id']
+                'user_type_id' => $data['user_type_id'],
+                'path_img_profile'=> $data['path']
             ];
 			$this->db->where('id',$id);
 			$this->db->update('user',$data);
@@ -73,6 +74,7 @@ class User_model extends CI_Model{
         }
         $this->db->order_by('id', 'desc');
         $q = $this->db->get();
+        //print_r($this->db->last_query());
         return $q->result();
     }
     

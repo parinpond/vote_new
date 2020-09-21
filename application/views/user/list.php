@@ -126,7 +126,7 @@
 						</button>
 						</div>
 						<div class="modal-body">
-							<form class="user" method="post" action="<?php echo base_url();?>user/update_user">
+							<form class="user" method="post" action="<?php echo base_url();?>user/update_user" enctype="multipart/form-data">
 								<input type="hidden" name="id" id="id" value="<?php echo $value->id ;?>">
 								<div class="form-group row">
 									<div class="col-sm-6 mb-3 mb-sm-0">
@@ -155,6 +155,12 @@
 										</select>
 									</div>
 								</div>
+								<div class="form-group row">
+									<div class="col-sm-12">
+								<img style="display: block;margin-left: auto;margin-right: auto;width: 30%;" src="<?php echo ($value->path_img_profile=="")?  base_url()."picture_profile/img_empty.png":base_url().$value->path_img_profile;?>" style="border-radius: 30%;width:50px;">
+								<input type="file" name="fileToUpload" id="fileToUpload">
+								<input type="hidden" name="path_img_profile" id="path_img_profile" value="<?php echo $value->path_img_profile ;?>">
+	</div></div>
 							
 						</div>
 						<div class="modal-footer">

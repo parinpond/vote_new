@@ -17,6 +17,7 @@ class User extends CI_Controller {
         }
     }
     function upload_picture() {
+	   
         if (!empty($_REQUEST)) {
             $data['user_id'] = trim($this->input->post('user_id'));
             $data['username'] = trim($this->input->post('username'));
@@ -96,6 +97,22 @@ class User extends CI_Controller {
 	           redirect('user/index');
             }
             if(!empty($data)){
+	            if($_FILES["fileToUpload"]["name"] != ""){
+		            $filename=$_FILES["fileToUpload"]["name"];
+	                $extension=end(explode(".", $filename));
+	                $rename=$username[0].round(microtime(true) * 1);
+	                $new_name =$rename.".".$extension;
+	                $data['path'] = "picture_profile/" .$new_name;
+	                $this->user_model->upload_picture_user($data);
+	                
+	                $target_dir  = $_SERVER['DOCUMENT_ROOT'] . "/vote/picture_profile/".$new_name;
+	                unlink($_SERVER['DOCUMENT_ROOT']."/vote/" .$check_user[0]->path_img_profile);
+	                move_uploaded_file($_FILES["fileToUpload"]["tmp_name"],$target_dir);
+	            }else{
+		            $data['path'] =$this->input->post('path_img_profile');
+	            }
+				
+                
 	            $this->user_model->update_user($data);
 	            redirect('user/index');
             }
