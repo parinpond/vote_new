@@ -24,6 +24,7 @@ class User_model extends CI_Model{
                 'password' => $data['password'],
                 'user_type_id' => $data['user_type_id'],
                 'create_date'=>date("Y-m-d"),
+		'path_img_profile'=>""
             ));
         }
     }
